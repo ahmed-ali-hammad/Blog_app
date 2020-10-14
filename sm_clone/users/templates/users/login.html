@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Blog app - Log in
+{% endblock %}
+
+{% block body %}
+  <br>
+  <main role="main" class="container" >
+    <div class="row">
+      <div class="col-md-4">
+        <div class="content-section">
+          <form method="post">
+            {% csrf_token%}
+            {{form_2|crispy}}  
+            <div class="col text-center"> 
+               <button class = "btn btn-outline-secondary" type="submit" >Log in</button>
+            </div>
+          </form>
+          <br>
+          <div class="col text-center"> 
+            <a href="{% url 'password_reset' %}">Forgot Password?</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-1 "></div>
+
+      <div class="col-md-6">
+          <div class="content-section">
+            <h4 class="text-muted">Create a New Account</h4>
+             <form method="post">
+              {% csrf_token%}
+              {{form_1|crispy}}
+            <button class = "btn btn-outline-secondary" type="submit" >Sign Up</button>   
+            </form>
+          </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
